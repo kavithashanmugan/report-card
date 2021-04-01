@@ -8,7 +8,6 @@ function csvToJson(filename) {
       let lines = data.split(/(?:\r\n|\n)+/).filter(function (el) {
         return el.length != 0;
       });
-      //console.log("lines",lines)
 
       var result = [];
 
@@ -19,8 +18,6 @@ function csvToJson(filename) {
         var currentline = lines[i].split(",");
 
         for (var j = 0; j < headers.length; j++) {
-        //  console.log("testing",Number.isNaN(parseInt(currentline[j])))
-          //console.log("val,,,",parseInt(currentline[j]))
           if (Number.isNaN(parseInt(currentline[j]))) {
             obj[headers[j]] = currentline[j];
           } else {

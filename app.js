@@ -4,18 +4,16 @@ const fs = require('fs')
 var jsonResult;
 var outputFile;
 var totalAverage = function (courses) {
-  //console.log("parsed..",JSON.parse(this.courses))
+ 
   if (courses.length != 0) {
     let totalAvg = courses.reduce(function (acc, d) {
-      //   console.log("d ca aa",acc + d.courseAverage)
-    
-    //  console.log("d ca aa",acc + d.courseAverage)
+
       return acc + (d.courseAverage||0);
     
     }, 0);
 
     return (totalAvg / courses.length).toFixed(2);
-    //.toFixed(2);
+ 
   } else {
     return "no grades mentioned";
   }
@@ -99,14 +97,14 @@ function getCourseDetails(arr1,arr2){
 function getTotalCourse(student_id,courses,tests,marks){
   let  tests_attended = getTestsAttended(student_id,marks)
       
-      let gc = getCourses(student_id,tests,tests_attended)
+      let coursesAttended = getCourses(student_id,tests,tests_attended)
      
-      let merged = getCourseDetails(gc,courses)
+      let merged = getCourseDetails(coursesAttended,courses)
       //console.log("merged..",merged)
  //delete arr[i]["weighted_marks"];
-        let ca = getCourseAverage(merged)
+        let courseAverage = getCourseAverage(merged)
 
-       return ca;
+       return courseAverage;
 
 }
 
